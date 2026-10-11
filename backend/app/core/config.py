@@ -11,7 +11,13 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "medcare-dev-secret-key-change-in-production-32chars"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     ALGORITHM: str = "HS256"
-    AI_PROVIDER: str = "mock"
+    AI_PROVIDER: str = "real"
+    LAYA_ENABLED: bool = False
+    LLM_BASE_URL: str = ""
+    LLM_MODEL: str = ""
+    LLM_API_KEY: str = ""
+    ALLOW_REMOTE_LLM: bool = False
+    MAX_UPLOAD_BYTES: int = 10_000_000
     UPLOAD_DIR: str = "./uploads"
     CORS_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
