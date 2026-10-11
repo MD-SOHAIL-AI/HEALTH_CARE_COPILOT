@@ -8,6 +8,7 @@ import {
   LogOut,
   Pill,
   UserRound,
+  Bot,
 } from 'lucide-react'
 import clsx from 'clsx'
 import { useAuth } from '../lib/auth'
@@ -16,6 +17,7 @@ import { Button } from './ui'
 const links = [
   { to: '/', key: 'dashboard', icon: LayoutDashboard },
   { to: '/upload', key: 'upload', icon: FileUp },
+  { to: '/copilot', key: 'copilot', icon: Bot },
   { to: '/timeline', key: 'timeline', icon: CalendarRange },
   { to: '/medications', key: 'medications', icon: Pill },
   { to: '/labs', key: 'labs', icon: Activity },
@@ -55,7 +57,7 @@ export function Layout() {
                 }
               >
                 <Icon size={18} />
-                {t(`nav.${key}`)}
+                {key === 'copilot' ? 'AI Copilot' : t(`nav.${key}`)}
               </NavLink>
             ))}
           </nav>
