@@ -153,3 +153,16 @@ export async function exportFhirBundle() {
   const res = await api.get('/fhir/me/$everything')
   return res.data
 }
+
+export interface CopilotAnswer {
+  answer: string
+  citations: Array<{ document_id: number; title: string; excerpt: string; page: number | null }>
+  decision: { status: string; [key: string]: unknown }
+  generation: { status: string; [key: string]: unknown }
+  evidence_count: number
+  disclaimer: string
+}
+export async function askCopilot(question: string, language: 'en' | 'hi' | 'ta' = 'en'): Promise<CopilotAnswer> {
+  const response = await api.post<CopilotAnswer>('/copilot/ask', { question, language })
+  return response.data
+}
