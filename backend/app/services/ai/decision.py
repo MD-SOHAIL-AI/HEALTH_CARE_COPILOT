@@ -18,13 +18,13 @@ QUESTIONS = {
 @lru_cache(maxsize=1)
 def _router():
     from laya import Router
-    return Router(preload=False)
+    return Router()
 
 def route_question(question: str) -> dict:
     if not get_settings().LAYA_ENABLED:
         return {"status": "disabled", "model": None, "intent": None}
     try:
-        result = _router().predict({"question": question[:1000]}, QUESTIONS)
+        result = _router().predict("Question: " + question[:1000], QUESTIONS)
         answer = result.get("answers", {}).get("intent", {})
         label = answer.get("choice")
         conf = float(answer.get("confidence", 0.0))
