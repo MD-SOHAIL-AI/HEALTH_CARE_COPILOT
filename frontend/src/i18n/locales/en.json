@@ -1,0 +1,104 @@
+{
+  "appName": "MedCare",
+  "tagline": "AI-Powered Personal Health Copilot",
+  "disclaimer": "Not a diagnosis; consult your doctor. MedCare explains records for understanding only.",
+  "nav": {
+    "dashboard": "Dashboard",
+    "upload": "Upload",
+    "timeline": "Timeline",
+    "medications": "Medications",
+    "labs": "Lab trends",
+    "profile": "Health profile",
+    "logout": "Log out"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "noAccount": "New here?",
+    "hasAccount": "Already have an account?",
+    "demoHint": "Demo: demo@medcare.app / demo1234"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "activeMeds": "Active medications",
+    "abnormal": "Recent abnormal values",
+    "latestSummary": "Latest AI summary",
+    "uploadCta": "Upload a medical record",
+    "recentDocs": "Recent documents",
+    "noData": "No data yet — upload your first prescription or lab report."
+  },
+  "upload": {
+    "title": "Upload medical records",
+    "drop": "Drag & drop files here, or click to browse",
+    "type": "Document type",
+    "date": "Record date",
+    "facility": "Facility (optional)",
+    "submit": "Upload & extract",
+    "types": {
+      "prescription": "Prescription",
+      "lab_report": "Lab report",
+      "discharge_summary": "Discharge summary",
+      "diagnostic_report": "Diagnostic report"
+    }
+  },
+  "document": {
+    "review": "Review extraction",
+    "confirm": "Confirm & add to profile",
+    "reprocess": "Re-run AI",
+    "summary": "Plain-language summary",
+    "abnormal": "What abnormal values mean",
+    "medications": "Medicines",
+    "observations": "Lab values",
+    "conditions": "Conditions",
+    "confidence": "Confidence",
+    "lowConfidence": "Needs review",
+    "preview": "Original document",
+    "status": "Status",
+    "processing": "Extracting information…",
+    "failed": "Processing failed"
+  },
+  "timeline": {
+    "title": "Health timeline",
+    "all": "All",
+    "empty": "Confirmed records will appear here."
+  },
+  "medications": {
+    "title": "Medications",
+    "active": "Active",
+    "past": "Past",
+    "empty": "No verified medications yet."
+  },
+  "labs": {
+    "title": "Lab trends",
+    "empty": "Confirm lab reports to see trends.",
+    "refRange": "Reference range"
+  },
+  "profile": {
+    "title": "Health profile",
+    "demographics": "Demographics",
+    "conditions": "Conditions",
+    "allergies": "Allergies",
+    "abha": "ABHA (mock)",
+    "abhaNumber": "ABHA number",
+    "otp": "OTP (use 123456)",
+    "link": "Link ABHA",
+    "import": "Import sample FHIR bundle",
+    "export": "Export FHIR Bundle",
+    "linked": "Linked",
+    "save": "Save profile",
+    "language": "Preferred language"
+  },
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "view": "View",
+    "source": "Source document",
+    "high": "High",
+    "low": "Low",
+    "normal": "Normal"
+  }
+}

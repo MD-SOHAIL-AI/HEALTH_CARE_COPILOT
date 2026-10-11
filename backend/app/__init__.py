@@ -1,0 +1,1 @@
+"""MedCare FastAPI application package."""
