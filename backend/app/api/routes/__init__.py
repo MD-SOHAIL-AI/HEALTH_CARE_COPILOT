@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.routes import abha, auth, conditions, documents, fhir, medications, observations, patients, summaries, timeline
+from app.api.routes import abha, auth, conditions, documents, fhir, medications, observations, patients, summaries, timeline, copilot
 
 api_router = APIRouter(prefix="/api")
 api_router.include_router(auth.router)
@@ -13,3 +13,4 @@ api_router.include_router(timeline.router)
 api_router.include_router(summaries.router)
 api_router.include_router(abha.router)
 api_router.include_router(fhir.router)
+api_router.include_router(copilot.router)

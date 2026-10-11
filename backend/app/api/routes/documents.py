@@ -88,11 +88,30 @@ async def upload_document(
     patient: Patient = Depends(get_current_patient),
     db: Session = Depends(get_db),
 ) -> Document:
-    suffix = Path(file.filename or "upload.bin").suffix
+    suffix = Path(file.filename or "upload.bin").suffix.lower()
+    accepted = {".pdf", ".png", ".jpg", ".jpeg", ".webp", ".txt"}
+    if suffix not in accepted:
+        raise HTTPException(status_code=415, detail="Allowed formats: PDF, PNG, JPEG, WebP, TXT")
     stored_name = f"{uuid.uuid4().hex}{suffix}"
     dest = settings.upload_path / stored_name
-    with dest.open("wb") as out:
-        shutil.copyfileobj(file.file, out)
+    total = 0
+    try:
+        with dest.open("wb") as out:
+            while chunk := await file.read(1024 * 1024):
+                total += len(chunk)
+                if total > settings.MAX_UPLOAD_BYTES:
+                    raise HTTPException(status_code=413, detail="File exceeds upload limit")
+                out.write(chunk)
+        if total == 0:
+            raise HTTPException(status_code=400, detail="Empty document")
+        with dest.open("rb") as source:
+            magic = source.read(12)
+        valid = (suffix == ".pdf" and magic.startswith(b"%PDF")) or (suffix == ".png" and magic.startswith(b"\x89PNG\r\n\x1a\n")) or (suffix in {".jpg", ".jpeg"} and magic.startswith(b"\xff\xd8\xff")) or (suffix == ".webp" and magic.startswith(b"RIFF") and magic[8:12] == b"WEBP") or (suffix == ".txt" and b"\x00" not in magic)
+        if not valid:
+            raise HTTPException(status_code=415, detail="File contents do not match supported format")
+    except Exception:
+        dest.unlink(missing_ok=True)
+        raise
 
     from datetime import date as date_cls
 

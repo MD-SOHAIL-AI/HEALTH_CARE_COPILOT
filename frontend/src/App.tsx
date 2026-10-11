@@ -10,6 +10,7 @@ import { ProfilePage } from './pages/ProfilePage'
 import { RegisterPage } from './pages/RegisterPage'
 import { TimelinePage } from './pages/TimelinePage'
 import { UploadPage } from './pages/UploadPage'
+import { CopilotPage } from './pages/CopilotPage'
 
 function Protected({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="upload" element={<UploadPage />} />
         <Route path="documents/:id" element={<DocumentDetailPage />} />
         <Route path="timeline" element={<TimelinePage />} />
+        <Route path="copilot" element={<CopilotPage />} />
         <Route path="medications" element={<MedicationsPage />} />
         <Route path="labs" element={<LabsPage />} />
         <Route path="profile" element={<ProfilePage />} />
